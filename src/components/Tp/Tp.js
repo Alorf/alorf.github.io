@@ -25,6 +25,7 @@ export default function Tp() {
             setCurrent(nextTp);
             setUserAnswer({ traduction: current.traduction });
 
+        } else {
         }
     }
 
