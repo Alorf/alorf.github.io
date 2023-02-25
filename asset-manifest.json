@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-deploy/static/css/main.e4f79dd6.css",
-    "main.js": "/react-deploy/static/js/main.516e10e3.js",
-    "static/js/787.d4426371.chunk.js": "/react-deploy/static/js/787.d4426371.chunk.js",
-    "index.html": "/react-deploy/index.html",
-    "main.e4f79dd6.css.map": "/react-deploy/static/css/main.e4f79dd6.css.map",
-    "main.516e10e3.js.map": "/react-deploy/static/js/main.516e10e3.js.map",
-    "787.d4426371.chunk.js.map": "/react-deploy/static/js/787.d4426371.chunk.js.map"
+    "main.css": "/site-pour-anglais/static/css/main.e4f79dd6.css",
+    "main.js": "/site-pour-anglais/static/js/main.a548aeaa.js",
+    "static/js/787.d4426371.chunk.js": "/site-pour-anglais/static/js/787.d4426371.chunk.js",
+    "index.html": "/site-pour-anglais/index.html",
+    "main.e4f79dd6.css.map": "/site-pour-anglais/static/css/main.e4f79dd6.css.map",
+    "main.a548aeaa.js.map": "/site-pour-anglais/static/js/main.a548aeaa.js.map",
+    "787.d4426371.chunk.js.map": "/site-pour-anglais/static/js/787.d4426371.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e4f79dd6.css",
-    "static/js/main.516e10e3.js"
+    "static/js/main.a548aeaa.js"
   ]
 }
