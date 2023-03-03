@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import json from '../../json/data.json';
 
-
 export default function Tp() {
     const tps = json.tp;
-    var [userAnswer, setUserAnswer] = useState({ infinitif: '', past_simple: '', past_participle: '', traduction: '' });
+    var [userAnswer, setUserAnswer] = useState({ infinitif: '', past_simple: '', past_participle: '' });
     var [before, setBefore] = useState({ infinitif: '', past_simple: '', past_participle: '', traduction: '' });
     const [current, setCurrent] = useState({ infinitif: '', past_simple: '', past_participle: '', traduction: '' });
     const [remaining, setRemaining] = useState(tps.length);
@@ -23,16 +22,15 @@ export default function Tp() {
         if (nextTp != null) {
             setBefore(current);
             setCurrent(nextTp);
-            setUserAnswer({ traduction: current.traduction });
+            setUserAnswer({ infinitif: '', past_simple: '', past_participle: '' });
 
-        } else {
         }
     }
 
     function valider() {
-        if (userAnswer.infinitif == current.infinitif && userAnswer.past_participle == current.past_participle && userAnswer.past_simple == current.past_simple) {
+        if (userAnswer.infinitif === current.infinitif && userAnswer.past_participle === current.past_participle && userAnswer.past_simple === current.past_simple) {
             setCorrect(1);
-            if (remaining == 1) {
+            if (remaining <= 1) {
                 setRemaining('Aucun');
                 document.getElementById("submit").disabled = true;
                 setCorrect(2);
@@ -51,6 +49,7 @@ export default function Tp() {
         } else {
             setCorrect(0);
             loadTp();
+
         }
     }
 
@@ -60,7 +59,6 @@ export default function Tp() {
         document.getElementById("infinitif").focus();
 
     }
-
 
     useEffect(() => {
         loadTp();
@@ -73,29 +71,49 @@ export default function Tp() {
 
     return (
         <article className='prose min-h-full min-w-fit mx-auto py-10'>
-            <h1 className='text-center'>Entrainement TP</h1>
+
+            <input type="checkbox" id="my-modal" className="modal-toggle" />
+            <div className="modal">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Conseil</h3>
+                    <p className="py-4">Utilisez <span className="badge">TAB</span> et <span className="badge">ENTER</span> pour valider vos tp plus rapidement</p>
+                    <div className="modal-action">
+                        <label htmlFor="my-modal" className="btn">Compris</label>
+                    </div>
+                </div>
+            </div>
 
             <form className='flex items-center h-96' onSubmit={handleSubmit}>
                 <div className='grid gap-4 grid-cols-4'>
+
+                    <h1 className='col-span-3'>Entrainement TP</h1>
+
+                    <label htmlFor="my-modal" className="btn bg-secondary col-span-1">Conseil</label>
+
                     <label className="input-group input-group-vertical">
                         <span className='justify-center'>Infinitif</span>
-                        <input type="text" id="infinitif" placeholder="Infinitif" autoComplete="off" className="input input-bordered" onChange={handleChange} autoFocus />
+                        <input type="text" id="infinitif" placeholder="Infinitif" autoComplete="off" className="input input-bordered" value={userAnswer.infinitif} onChange={handleChange} autoFocus />
                     </label>
+
                     <label className="input-group input-group-vertical">
                         <span className='justify-center'>Past Simple</span>
-                        <input type="text" id="past_simple" placeholder="Past Simple" autoComplete="off" className="input input-bordered" onChange={handleChange} />
+                        <input type="text" id="past_simple" placeholder="Past Simple" autoComplete="off" className="input input-bordered" value={userAnswer.past_simple} onChange={handleChange} />
                     </label>
+
                     <label className="input-group input-group-vertical">
                         <span className='justify-center'>Past Participle</span>
-                        <input type="text" id="past_participle" placeholder="Past Participle" autoComplete="off" className="input input-bordered" onChange={handleChange} />
+                        <input type="text" id="past_participle" placeholder="Past Participle" autoComplete="off" className="input input-bordered" value={userAnswer.past_participle} onChange={handleChange} />
                     </label>
+
                     <label className="input-group input-group-vertical">
                         <span className='justify-center'>Traduction</span>
                         <input type="text" placeholder="Traduction" autoComplete="off" className="input input-bordered input-success" defaultValue={current.traduction} disabled />
                     </label>
+
                     <div className="divider col-span-4">Valider</div>
 
                     <button id="submit" className='btn w-full btn-primary col-span-4' type="submit" onClick={handleSubmit}>Valider</button>
+
                     <div className="divider col-span-4">{remaining}</div>
 
                 </div>
